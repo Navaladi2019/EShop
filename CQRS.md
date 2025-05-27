@@ -55,6 +55,6 @@ graph LR
     A[Client] --> B(UI)
     B --> C{Command}
     C --> D[Write Database (Tables)]
-    D -- Eventual Consistency --> E[Read Database (Materialized View)]
+    D -- |Eventual Consistency| --> E[Read Database (Materialized View)]
     B --> F{Query}
     F --> E
