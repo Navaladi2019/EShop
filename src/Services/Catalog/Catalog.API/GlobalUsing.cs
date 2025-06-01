@@ -1,0 +1,10 @@
+﻿global using Carter;
+global using Mapster;
+global using MediatR;
+global using BuildingBlocks.CQRS;
+global using Catalog.API.Models;
+global using Marten;
+global using System.Collections.Generic;
+global using Catalog.API.Exceptions;
+global using BuildingBlocks.Exceptions;
+global using Catalog.API.Data;

@@ -1,0 +1,7 @@
+version: "3.8"  # Using a specific Docker Compose version
+
+services:
+  catalogdb:
+    image: postgres:latest
+volumes:
+  postgres_catalog:
