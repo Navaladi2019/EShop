@@ -1,11 +1,8 @@
 using BuildingBlocks.Behaviour;
-using Catalog.API.Exceptions.Handler;
 using Catalog.API.Products.CreateProduct;
 using FluentValidation;
 using HealthChecks.UI.Client;
-using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,11 +26,11 @@ if (builder.Environment.IsDevelopment())
 
 builder.Services.AddMarten(opts =>
 {
-    opts.Connection(builder.Configuration.GetConnectionString("DefaultConnection"));
+    opts.Connection(builder.Configuration.GetConnectionString("Database"));
 }).UseLightweightSessions();
 builder.Services.AddCarter();
 
-builder.Services.AddHealthChecks().AddNpgSql(builder.Configuration.GetConnectionString("DefaultConnection"));
+builder.Services.AddHealthChecks().AddNpgSql(builder.Configuration.GetConnectionString("Database"));
 
 
 var app = builder.Build();

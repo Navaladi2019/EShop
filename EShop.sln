@@ -13,6 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.API", "src\Services
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E10E4961-6A1A-47DD-8B88-9419C260CD12}"
 	ProjectSection(SolutionItems) = preProject
+		CacheAside.md = CacheAside.md
 		CQRS.md = CQRS.md
 		MediatorPattern.md = MediatorPattern.md
 	EndProjectSection
@@ -22,6 +23,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildingBlocks", "src\BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj", "{B8F647F3-4AE4-429E-B8FD-04A713E79C24}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{EA2193F2-64B3-4756-9E31-C5F1E9645797}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{FB7B3E5E-E8C5-412F-B487-64DAF2C231CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.API", "src\Services\Basket\Basket.API\Basket.API.csproj", "{27CB334F-E598-4804-9BE0-7642F8CCC60C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +46,10 @@ Global
 		{EA2193F2-64B3-4756-9E31-C5F1E9645797}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA2193F2-64B3-4756-9E31-C5F1E9645797}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA2193F2-64B3-4756-9E31-C5F1E9645797}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27CB334F-E598-4804-9BE0-7642F8CCC60C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27CB334F-E598-4804-9BE0-7642F8CCC60C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27CB334F-E598-4804-9BE0-7642F8CCC60C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27CB334F-E598-4804-9BE0-7642F8CCC60C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +60,8 @@ Global
 		{F3159B94-416A-4E71-990E-C972D484C928} = {8AFF12CE-78CE-4F8D-BAD0-6CC18893B59F}
 		{8958F8D0-9735-4E0A-8FE3-FBBB734A07A0} = {EA9125E8-B9AB-4D6B-986B-1A81ED3DA6D6}
 		{B8F647F3-4AE4-429E-B8FD-04A713E79C24} = {8958F8D0-9735-4E0A-8FE3-FBBB734A07A0}
+		{FB7B3E5E-E8C5-412F-B487-64DAF2C231CD} = {986AF2A4-022E-420C-B5C9-26D36829C0CF}
+		{27CB334F-E598-4804-9BE0-7642F8CCC60C} = {FB7B3E5E-E8C5-412F-B487-64DAF2C231CD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {823D5068-06BF-4372-B182-9FC0FC92BC40}

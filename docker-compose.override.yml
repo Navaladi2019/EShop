@@ -12,3 +12,44 @@ services:
       - "5432:5432" # Maps host port 5432 to container port 5432
     volumes:
       - postgres_catalog:/var/lib/postgresql/data # Persistent data storage for PostgreSQL
+
+  basketdb:
+    container_name: basketdb  # Optional: Makes it easier to reference the container by name
+    environment:
+      - POSTGRES_USER=postgres   # Specify the database user
+      - POSTGRES_PASSWORD=postgres  # Specify the password
+      - POSTGRES_DB=BasketDb  # Specify the database name
+    restart: always
+    ports:
+      - "5434:5432" # Maps host port 5432 to container port 5432
+    volumes:
+      - postgres_basket:/var/lib/postgresql/data # Persistent data storage for PostgreSQL
+
+  catalog.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - ConnectionStrings__Database=Server=catalogdb;Database=CatalogDb;Username=postgres;Password=postgres
+    depends_on:
+      - catalogdb
+    ports:
+      - "6000:8080"
+      - "6060:8081"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+  basket.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+    depends_on:
+      - basketdb
+    ports:
+      - "5001:8080"
+      - "5051:8081"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro

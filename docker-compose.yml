@@ -3,5 +3,23 @@ version: "3.8"  # Using a specific Docker Compose version
 services:
   catalogdb:
     image: postgres:latest
+
+  basketdb:
+    image: postgres:latest
+
+  catalog.api:
+    image: ${DOCKER_REGISTRY-}catalogapi
+    build:
+      context: .
+      dockerfile: src/Services/Catalog/Catalog.API/Dockerfile
+
+  basket.api:
+    image: ${DOCKER_REGISTRY-}basketapi
+    build:
+      context: .
+      dockerfile: src/Services/Basket/Basket.API/Dockerfile
+
 volumes:
   postgres_catalog:
+  postgres_basket:
+
