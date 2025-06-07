@@ -1,0 +1,1 @@
+<iframe src="https://medium.com/@aforank/domain-driven-design-aggregates-in-practice-bcced7d21ae5" width="100%" height="500"></iframe>

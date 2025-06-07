@@ -2,6 +2,9 @@
 
 using Basket.API.Data;
 using BuildingBlocks.Behaviour;
+using Discount.Grpc;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,10 +32,27 @@ builder.Services.AddMarten(opts =>
 
 
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+builder.Services.Decorate<IBasketRepository, CachedBasketRepository>();
 
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration.GetConnectionString("Redis");
+    options.InstanceName = "BasketInstance";
+});
+
+builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(o =>
+{
+    o.Address = new Uri(builder.Configuration.GetValue<string>("GrpcSettings:DiscountUrl"));
+});
+
+
+builder.Services.AddHealthChecks()
+    .AddNpgSql(builder.Configuration.GetConnectionString("Database"))
+    .AddRedis(builder.Configuration.GetConnectionString("Redis"));
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+app.UseHealthChecks("/health",
+    new HealthCheckOptions { ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse });
 
 app.MapCarter();
 
