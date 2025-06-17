@@ -12,7 +12,17 @@ services:
       - "5432:5432" # Maps host port 5432 to container port 5432
     volumes:
       - postgres_catalog:/var/lib/postgresql/data # Persistent data storage for PostgreSQL
-
+  orderdb:
+    container_name: orderdb
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=SwN12345678
+    restart: always
+    ports:
+      - "1435:1433"
+    volumes:
+      - sqlserver_order:/var/lib/sqlserver/data # Persistent data storage for PostgreSQL
+      
   basketdb:
     container_name: basketdb  # Optional: Makes it easier to reference the container by name
     environment:
@@ -76,3 +86,24 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+  ordering.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - ConnectionStrings__Database=Server=orderdb;Database=OrderDb;User Id=sa;Password=SwN12345678;Encrypt=False;TrustServerCertificate=True
+      - ConnectionStrings__EventBus=amqp://guest:guest@rabbitmq:5672  
+      - MessageBroker__Host=amqp://ecommerce-mq:5672
+      - MessageBroker__UserName=guest
+      - MessageBroker__Password=guest
+      - FeatureManagement__OrderFullfilment=false
+    ports:
+      - "6003:8080"
+      - "6063:8081"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+    depends_on:
+      - orderdb
+      - distributedcache

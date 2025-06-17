@@ -4,6 +4,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EA9125E8-B9AB-4D6B-986B-1A81ED3DA6D6}"
+	ProjectSection(SolutionItems) = preProject
+		src\Services\Order\Ordering.Api\appsettings.Development.json = src\Services\Order\Ordering.Api\appsettings.Development.json
+		src\Services\Order\Ordering.Api\appsettings.json = src\Services\Order\Ordering.Api\appsettings.json
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{986AF2A4-022E-420C-B5C9-26D36829C0CF}"
 EndProject
@@ -36,13 +40,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discount.Grpc", "src\Servic
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Order", "Order", "{1B21210E-2003-4FA6-B7D1-CDF4244B728C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Api", "src\Services\Order\Ordering.Api\Ordering.Api.csproj", "{A566C6F3-EFA1-4729-8F43-46AD372DDE91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Api", "src\Services\Order\Ordering.Api\Ordering.Api.csproj", "{A566C6F3-EFA1-4729-8F43-46AD372DDE91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Domain", "src\Services\Order\Ordering.Domain\Ordering.Domain.csproj", "{CB47C2E8-EF64-47EB-B804-99BBDF7D4AEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Domain", "src\Services\Order\Ordering.Domain\Ordering.Domain.csproj", "{CB47C2E8-EF64-47EB-B804-99BBDF7D4AEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Application", "src\Services\Order\Ordering.Application\Ordering.Application.csproj", "{92090629-D330-4741-A0EB-24C8AA61CB38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Application", "src\Services\Order\Ordering.Application\Ordering.Application.csproj", "{92090629-D330-4741-A0EB-24C8AA61CB38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Infrastructure", "src\Services\Order\Ordering.Infrastructure\Ordering.Infrastructure.csproj", "{48160C45-DE05-49A7-B6BB-3CA6AA1DAD74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Infrastructure", "src\Services\Order\Ordering.Infrastructure\Ordering.Infrastructure.csproj", "{48160C45-DE05-49A7-B6BB-3CA6AA1DAD74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
